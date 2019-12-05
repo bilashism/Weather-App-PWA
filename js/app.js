@@ -28,7 +28,7 @@
         fetch(`${darksky_proxy}${req_url}`).then(res => res.json()).then(data => {
             console.log(data);
             const darksky_api2 = `${darksky_proxy}https://api.darksky.net/forecast/${darksky_api_key}${data.results[0].geometry.lat},${data.results[0].geometry.lng}?units=auto`;
-            fetch(darksky_api2, { headers: { 'Content-Type': 'application/json' }, mode: 'no-cors' }).then(res => res.json()).then(acctualData => {
+            fetch(darksky_api2, { mode: 'no-cors' }).then(res => res.json()).then(acctualData => {
                 console.log(acctualData);
                 const { summary: summary, temperature: temperature, icon: icon } = acctualData.currently;
                 setIcons(icon, document.querySelector(".weather-icon"), "--icon-color"), location.textContent = data.results[0].formatted, summaryTxt.textContent = summary, temp.textContent = `${temperature}`, unit.textContent = "°c", selectorArrForTypeWriter.forEach(select => { new TypeWriter(select, Math.floor(10 * Math.random())) }),
