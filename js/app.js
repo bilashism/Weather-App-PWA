@@ -27,7 +27,7 @@
     function allFetcher(req_url) {
         fetch(`${darksky_proxy}${req_url}`).then(res => res.json()).then(data => {
             console.log(data);
-            const darksky_api2 = `${darksky_proxy}https://api.darksky.net/forecast/${darksky_api_key}${data.results[0].geometry.lat},${data.results[0].geometry.lng}?units=auto`;
+            const darksky_api2 = `${darksky_proxy}https://api.darksky.net/forecast/${darksky_api_key}/${data.results[0].geometry.lat},${data.results[0].geometry.lng}?units=auto`;
             fetch(darksky_api2).then(res => res.json()).then(acctualData => {
                 console.log(acctualData);
                 const { summary: summary, temperature: temperature, icon: icon } = acctualData.currently;
