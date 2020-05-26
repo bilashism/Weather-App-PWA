@@ -1,1 +1,143 @@
-<!DOCTYPE html><html lang="en"><head> <meta charset="UTF-8"> <meta name="viewport"content="width=device-width, initial-scale=1.0"> <meta http-equiv="X-UA-Compatible"content="ie=edge"> <meta name="author"content="Md. Taifuzzaman Bilash"> <meta name="keywords"content="Weather app, HTML, CSS, JavaScript"> <meta name="description"content="Installable weather PWA app in vanilla JavaScript"/> <link rel="preconnect"href="https://api.opencagedata.com"> <link rel="preconnect"href="https://cors-anywhere.herokuapp.com"> <link rel="preconnect"href="https://api.darksky.net"> <link rel="dns-prefetch"href="https://bilashism.github.io/"> <link rel="preload"as="style"href="https://fonts.googleapis.com/css?family=Rubik&display=swap"> <link rel="preload"as="style"href="./css/bootstrap-reboot.min.css"> <link rel="preload"as="style"href="./css/style.css"> <link rel="preload"as="script"href="./js/skycons.js"> <link rel="preload"as="script"href="./js/app.js"> <link rel="manifest"href="./manifest.json"> <link rel="shortcut icon"href="./img/icon-16x16.png"type="image/x-icon"> <link rel="apple-touch-icon"href="./img/icon-96x96.png"> <meta name="apple-mobile-web-app-status-bar"content="#D6A4A4"> <meta name='theme-color' content="#D6A4A4"> <title>Weather Now</title> <link href="https://fonts.googleapis.com/css?family=Rubik&display=swap"rel="stylesheet"> <link rel="stylesheet"href="./css/bootstrap-reboot.min.css"> <link rel="stylesheet"href="./css/style.css"></head><body> <div class="preloader"> <div class="lds-ellipsis"> <div></div> <div></div> <div></div> <div></div> </div> </div> <div class="container"> <div class="dis-flex flex-col flex-lg-row-rev"> <div class="flex-basis-100 digital-clock txt-c align-self-center mt-x-5"> <span class="clockNow dis-inline-b fw-bold"></span><sup class="am-pm"></sup> </div> <div class="flex-basis-100 width-100 align-self-center form-wrap"> <form class="search-form"action=""method="post"> <div class="search-contain"> <div class="input-wrapper pos-relative"> <svg class='search-icon' xmlns="http://www.w3.org/2000/svg"viewBox="0 0 512 512.00438"> <path d="m458.699219 512.003906-146.003907-146.003906 53.300782-53.300781 146.003906 146.003906zm0 0"fill="#87a0af"/> <path d="m221.535156 0-20.015625 220.273438 20.015625 222.796874c122.15625 0 221.535156-99.378906 221.535156-221.535156 0-122.152344-99.378906-221.535156-221.535156-221.535156zm0 0"fill="#b4d2d7"/> <path d="m.00390625 221.535156c0 122.15625 99.37890575 221.535156 221.53124975 221.535156v-443.070312c-122.152344 0-221.53124975 99.382812-221.53124975 221.535156zm0 0"fill="#e1ebf0"/> <path d="m221.535156 52.625-20.015625 167.648438 20.015625 170.171874c93.140625 0 168.910156-75.769531 168.910156-168.910156 0-93.136718-75.769531-168.910156-168.910156-168.910156zm0 0"fill="#212cbb"/> <path d="m52.625 221.535156c0 93.140625 75.773438 168.910156 168.914062 168.910156v-337.820312c-93.140624 0-168.914062 75.773438-168.914062 168.910156zm0 0"fill="#005fe1"/> <path d="m305.507812 157.074219-83.972656 83.96875-10.007812 30.960937 10.007812 11.464844 105.183594-105.183594zm0 0"fill="#efe2dd"/> <path d="m198.578125 264.003906-61.011719-61.015625-21.210937 21.214844 82.222656 82.226563 22.957031-22.960938v-42.425781zm0 0"fill="#fff5f5"/> </svg> <label class="dis-none"for="inp1"></label> <input id="inp1"class="search_input"type="text"name="inp1"placeholder=""required autocomplete> </div> <input class="btn-submit"type="submit"value="Search"> <p class="tip">Hit enter or click the search button</p> </div> </form> </div> </div> <div> <h3 class="txt-cap"> <span>location</span> <span class="location fw-normal"></span></h3> </div> <div class="flex-row-wrap p-t-5"> <div class="flex-row-wrap flex-basis-100"> <h2 class="txt-cap flex-basis-50 txt-shadow">currently</h2> </div> <div class="flex-basis-100 flex-basis-lg-50 order-xs-2 align-self-center txt-c"> <span class="temp fw-bold f-cursive txt-shadow"></span> <sup class="unit"></sup> <div><span class="summary"></span></div> </div> <div class="flex-basis-100 flex-basis-lg-50 align-self-center d-inline-flex justify-cont-center"> <canvas class="weather-icon"width="128"height="128"></canvas> </div> </div> <div class="forecast p-t-5"> <h2 class="txt-cap txt-shadow">forecast</h2> <div class="today-wrap flex-row-wrap align-items-e j-c-b"> <div class="flex-basis-100"> <p class="fw-bold txt-upper m-b-half">today</p> </div> <div class="flex-row-wrap flex-basis-100 j-c-b"> <span class="today"></span> <span class="temp-min-max fw-bold txt-shadow"></span> <canvas class="weather-icon"width="30"height="30"></canvas> </div> </div> <div class="tomorrow-wrap flex-row-wrap align-items-e j-c-b p-t-1"> <div class="flex-basis-100"> <p class="fw-bold txt-upper m-b-half">tomorrow</p> </div> <div class="flex-row-wrap flex-basis-100 j-c-b"> <span class="tomorrow"></span> <span class="temp-min-max fw-bold txt-shadow"></span> <canvas class="weather-icon"width="30"height="30"></canvas> </div> </div> <div class="week-wrap flex-row-wrap p-t-5"> <canvas class="weather-icon m-x-center"width="80"height="80"></canvas> <div class="flex-basis-100 p-t-1"> <p class="week txt-upper txt-c"></p> </div> </div> </div> </div> <p class="font-small txt-c"> All rights reserved by <a class="fw-bold"href="https://bilashism.github.io/"target="_blank">Bilash</a> </p><script src="./js/skycons.js"></script> <script src="./js/app.js"></script></body></html>
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta http-equiv="X-UA-Compatible" content="ie=edge"><meta name="robots" content="index,follow"><meta name="author" content="Md. Taifuzzaman Bilash"><meta name="copyright" content="Md. Taifuzzaman Bilash"><meta property="og:type" content="website"><meta property="twitter:card" content="Weather_app"><meta name="twitter:site" content="@bilashism"><meta name="twitter:creator" content="@bilashism"><meta property="og:url" content="https://bilashism.github.io/"><meta property="twitter:url" content="https://bilashism.github.io/"><meta name="keywords" content="HTML, haml, CSS, sass, scss, JavaScript, Md. Taifuzzaman Bilash, bilash, jQuery, Bootstrap, PSD to HTML, xd to html, sketch to html, html to wordpress, wordpress theme, pwa, spa, Front-End Web Developer, bilashism, frontend developer,Weather app, forecast"><meta property="og:description" content="Installable weather PWA app in vanilla JavaScript"><meta property="twitter:description" content="Installable weather PWA app in vanilla JavaScript"><meta name="description" content="Installable weather PWA app in vanilla JavaScript"><meta property="og:title" content="Weather Now - Installable weather app in vanilla JavaScript"><meta property="twitter:title" content="Weather Now - Installable weather app in vanilla JavaScript"><meta name="title" content="Weather Now - Installable weather app in vanilla JavaScript"><meta class="status-bar" name="theme-color" content="#D6A4A4"><meta class="status-bar" name="apple-mobile-web-app-status-bar" content="#D6A4A4"><title>Weather Now - Installable weather app in vanilla JavaScript</title><link rel="shortcut icon" href="./img/icon-16x16.png" type="image/x-icon"><link rel="apple-touch-icon" href="./img/icon-96x96.png"><link rel="manifest" href="./manifest.json"><style id="preloader-css">body.loading {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            margin: 0;
+            overflow: hidden;
+            transition: all .5s ease-in-out;
+        }
+        
+        body.loading .preloader-container {
+            --loader-box-size: 35vh;
+            --loader-dot-size: calc( var(--loader-box-size) / 3);
+            --pre-bg: #fff;
+            --dot-bg: #000;
+            --dot-bg-1: #10beae;
+            --dot-bg-2: #ffe386;
+            --dot-bg-3: #f74d75;
+            position: relative;
+            width: inherit;
+            height: inherit;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--pre-bg);
+            overflow: hidden;
+            z-index: 9999;
+        }
+        
+        body.loading .preloader {
+            width: var(--loader-box-size);
+            height: var(--loader-box-size);
+            filter: url('#preloader-filter');
+            animation: rotate-360 2s ease-in-out infinite;
+        }
+        
+        .preloader .pre-dot {
+            width: var(--loader-dot-size);
+            height: var(--loader-dot-size);
+            border-radius: 50%;
+            background-color: var(--dot-bg);
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        
+        .preloader .pre-dot.pre-dot-1 {
+            background-color: var(--dot-bg-1);
+            animation: dot-1-move 2s ease infinite, index 6s -2s ease infinite;
+        }
+        
+        .preloader .pre-dot.pre-dot-2 {
+            background-color: var(--dot-bg-2);
+            animation: dot-2-move 2s ease infinite, index 6s -4s ease infinite;
+        }
+        
+        .preloader .pre-dot.pre-dot-3 {
+            background-color: var(--dot-bg-3);
+            animation: dot-3-move 2s ease infinite, index 6s ease infinite;
+        }
+        
+        @keyframes index {
+            0%,
+            100% {
+                z-index: 2
+            }
+            33.3% {
+                z-index: 3
+            }
+            66.6% {
+                z-index: 1
+            }
+        }
+        
+        @keyframes rotate-360 {
+            55% {
+                transform: rotate(0deg)
+            }
+            80%,
+            100% {
+                transform: rotate(360deg)
+            }
+        }
+        
+        @keyframes dot-1-move {
+            20% {
+                transform: scale(1)
+            }
+            45% {
+                transform: translate(16px, 12px) scale(.45)
+            }
+            60%,
+            80% {
+                transform: translate(80px, 60px) scale(.45)
+            }
+            100% {
+                transform: translateY(0px) scale(1)
+            }
+        }
+        
+        @keyframes dot-2-move {
+            20% {
+                transform: scale(1)
+            }
+            45% {
+                transform: translate(-16px, 12px) scale(.45)
+            }
+            60%,
+            80% {
+                transform: translate(-80px, 60px) scale(.45)
+            }
+            100% {
+                transform: translateY(0px) scale(1)
+            }
+        }
+        
+        @keyframes dot-3-move {
+            20% {
+                transform: scale(1)
+            }
+            45% {
+                transform: translateY(-18px) scale(.45)
+            }
+            60%,
+            80% {
+                transform: translateY(-90px) scale(.45)
+            }
+            100% {
+                transform: translateY(0px) scale(1)
+            }
+        }</style><script id="preloader-js">"use strict";
+        window.addEventListener('load', function() {
+            document.body.classList.remove('loading');
+            document.body.removeChild(document.querySelector('.preloader-container'));
+            document.head.removeChild(document.querySelector('#preloader-css'));
+            document.head.removeChild(document.querySelector('#preloader-js'));
+        });</script><link rel="preconnect" href="https://bilashism.github.io/"><link rel="preconnect" href="https://api.opencagedata.com"><link rel="preconnect" href="https://cors-anywhere.herokuapp.com"><link rel="preconnect" href="https://api.darksky.net"><link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Rubik&display=swap" crossorigin><link rel="preload" as="style" href="./css/bootstrap-reboot.min.css" crossorigin><link rel="preload" as="style" href="./css/style.css" crossorigin><link rel="preload" as="script" href="./js/skycons.js" crossorigin><link rel="preload" as="script" href="./js/app.js" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik&display=swap" media="print" onload="media='all'; this.onload=null;this.removeAttribute('onload');"><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rubik&display=swap"></noscript><link rel="stylesheet" href="./css/style.css" media="print" onload="media='all'; this.onload=null;this.removeAttribute('onload');"><noscript><link rel="stylesheet" href="./css/style.css"></noscript></head><body class="loading"><div class="preloader-container"><div class="preloader"><div class="pre-dot pre-dot-1"></div><div class="pre-dot pre-dot-2"></div><div class="pre-dot pre-dot-3"></div></div><svg style="display:none !important;"><defs><filter id="preloader-filter"><feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur"/><feColorMatrix in="blur" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 21 -7"/></filter></defs></svg></div><main class="container"><div class="dis-flex flex-col flex-lg-row-rev"><div class="flex-basis-100 digital-clock txt-c align-self-center mt-x-5"><span class="clockNow dis-inline-b fw-bold"></span><sup class="am-pm"></sup></div><div class="flex-basis-100 width-100 align-self-center form-wrap"><form class="search-form" action="#" method="post"><div class="search-contain"><div class="input-wrapper pos-relative"><svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512.00438"><path d="m458.699219 512.003906-146.003907-146.003906 53.300782-53.300781 146.003906 146.003906zm0 0" fill="#87a0af"/><path d="m221.535156 0-20.015625 220.273438 20.015625 222.796874c122.15625 0 221.535156-99.378906 221.535156-221.535156 0-122.152344-99.378906-221.535156-221.535156-221.535156zm0 0" fill="#b4d2d7"/><path d="m.00390625 221.535156c0 122.15625 99.37890575 221.535156 221.53124975 221.535156v-443.070312c-122.152344 0-221.53124975 99.382812-221.53124975 221.535156zm0 0" fill="#e1ebf0"/><path d="m221.535156 52.625-20.015625 167.648438 20.015625 170.171874c93.140625 0 168.910156-75.769531 168.910156-168.910156 0-93.136718-75.769531-168.910156-168.910156-168.910156zm0 0" fill="#212cbb"/><path d="m52.625 221.535156c0 93.140625 75.773438 168.910156 168.914062 168.910156v-337.820312c-93.140624 0-168.914062 75.773438-168.914062 168.910156zm0 0" fill="#005fe1"/><path d="m305.507812 157.074219-83.972656 83.96875-10.007812 30.960937 10.007812 11.464844 105.183594-105.183594zm0 0" fill="#efe2dd"/><path d="m198.578125 264.003906-61.011719-61.015625-21.210937 21.214844 82.222656 82.226563 22.957031-22.960938v-42.425781zm0 0" fill="#fff5f5"/></svg> <label class="dis-none" for="inp1"></label> <input id="inp1" class="search_input" type="text" name="inp1" placeholder="" required autocomplete></div><input class="btn-submit" type="submit" value="Search"><p class="tip">Hit enter or click search</p></div></form></div></div><div><h3 class="txt-cap"><span>location</span> <span class="location fw-normal"></span></h3></div><div class="flex-row-wrap p-t-5"><div class="flex-row-wrap flex-basis-100"><h2 class="txt-cap flex-basis-50 txt-shadow">currently</h2></div><div class="flex-basis-100 flex-basis-lg-50 order-xs-2 align-self-center txt-c"><span class="temp fw-bold f-cursive txt-shadow"></span> <sup class="unit"></sup><div><span class="summary"></span></div></div><div class="flex-basis-100 flex-basis-lg-50 align-self-center d-inline-flex justify-cont-center"><canvas class="weather-icon" width="128" height="128"></canvas></div></div><div class="forecast p-t-5"><h2 class="txt-cap txt-shadow">forecast</h2><div class="today-wrap flex-row-wrap align-items-e j-c-b"><div class="flex-basis-100"><p class="fw-bold txt-upper m-b-half">today</p></div><div class="flex-row-wrap flex-basis-100 j-c-b"><span class="today"></span> <span class="temp-min-max fw-bold txt-shadow"></span><canvas class="weather-icon" width="30" height="30"></canvas></div></div><div class="tomorrow-wrap flex-row-wrap align-items-e j-c-b p-t-1"><div class="flex-basis-100"><p class="fw-bold txt-upper m-b-half">tomorrow</p></div><div class="flex-row-wrap flex-basis-100 j-c-b"><span class="tomorrow"></span> <span class="temp-min-max fw-bold txt-shadow"></span><canvas class="weather-icon" width="30" height="30"></canvas></div></div><div class="week-wrap flex-row-wrap p-t-5"><canvas class="weather-icon m-x-center" width="80" height="80"></canvas><div class="flex-basis-100 p-t-1"><p class="week txt-upper txt-c"></p></div></div></div></main><footer><p class="font-small txt-c"><span class="footer-year"></span> &copy; All rights reserved by <a class="fw-bold" title="Md. Taifuzzaman Bilash - Front-End Web Developer" href="https://bilashism.github.io/" target="_blank">Bilash</a></p></footer><script src="./js/skycons.js" defer="defer"></script><script src="./js/app.js" defer="defer"></script></body></html>
