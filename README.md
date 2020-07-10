@@ -1,4 +1,5 @@
 # Weather Now
+[![pas](https://img.shields.io/static/v1?&message=ProgressiveApp.Store&color=74b9ff&style=flat&label=Discover%20Weather%20Now%20at)](https://progressiveapp.store/pwa/Weather-Now)
 
 "Weather Now" is a installable, mobile-ready weather app (PWA) made with HTML, CSS and vanilla JavaScript.
 
